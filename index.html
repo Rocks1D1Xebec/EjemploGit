@@ -1,137 +1,150 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Carátula Universitaria</title>
     <!-- Tailwind CSS para estilos rápidos -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
-        body {
-            font-family: sans-serif;
-        }
-        
-        /* --- ESTILOS PARA IMPRESIÓN --- */
-        @media print {
-            .no-print { display: none !important; }
-            @page { size: A4; margin: 0; }
-            body {
-                background-color: white !important;
-                display: block !important;
-                padding: 0 !important;
-                margin: 0 !important;
-                height: 100%;
-            }
-            .print-container {
-                box-shadow: none !important;
-                border: none !important;
-                margin: 0 !important;
-                width: 100% !important;
-                max-width: 100% !important;
-                min-height: 100vh !important;
-            }
-            #logo-fallback {
-                border-color: #000 !important;
-                color: #000 !important;
-            }
-        }
-    </style>
-</head>
-<body class="bg-gray-200 min-h-screen flex items-center justify-center py-8 px-4">
+      body {
+        font-family: sans-serif;
+      }
 
-    <button onclick="window.print()" class="no-print fixed top-5 right-5 bg-blue-900 text-white px-4 py-2 rounded-full shadow-lg hover:bg-blue-800 transition-colors flex items-center gap-2 font-sans z-50 cursor-pointer">
-        🖨 Imprimir
+      /* --- ESTILOS PARA IMPRESIÓN --- */
+      @media print {
+        .no-print {
+          display: none !important;
+        }
+        @page {
+          size: A4;
+          margin: 0;
+        }
+        body {
+          background-color: white !important;
+          display: block !important;
+          padding: 0 !important;
+          margin: 0 !important;
+          height: 100%;
+        }
+        .print-container {
+          box-shadow: none !important;
+          border: none !important;
+          margin: 0 !important;
+          width: 100% !important;
+          max-width: 100% !important;
+          min-height: 100vh !important;
+        }
+        #logo-fallback {
+          border-color: #000 !important;
+          color: #000 !important;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-200 min-h-screen flex items-center justify-center py-8 px-4">
+    <button
+      onclick="window.print()"
+      class="no-print fixed top-5 right-5 bg-blue-900 text-white px-4 py-2 rounded-full shadow-lg hover:bg-blue-800 transition-colors flex items-center gap-2 font-sans z-50 cursor-pointer"
+    >
+      🖨 Imprimir
     </button>
 
-    <div class="print-container bg-white shadow-2xl w-full max-w-[21cm] min-h-[29.7cm] relative flex flex-col p-12 md:p-16 text-center border border-gray-300">
-        
-        <div class="absolute top-4 left-4 right-4 bottom-4 border-2 border-double border-gray-200 pointer-events-none"></div>
+    <div
+      class="print-container bg-white shadow-2xl w-full max-w-[21cm] min-h-[29.7cm] relative flex flex-col p-12 md:p-16 text-center border border-gray-300"
+    >
+      <div
+        class="absolute top-4 left-4 right-4 bottom-4 border-2 border-double border-gray-200 pointer-events-none"
+      ></div>
 
-        <header class="mb-10 z-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-gray-800 uppercase tracking-widest mb-3">
-                NOMBRE DE TU UNIVERSIDAD
-            </h2>
-            <h3 class="text-lg md:text-xl font-medium text-gray-600 uppercase tracking-wide">
-                Facultad de Ingeniería y Tecnología
-            </h3>
-            <p class="text-gray-500 mt-2 italic text-lg">Departamento de Ciencias de la Computación</p>
-        </header>
+      <header class="mb-10 z-10">
+        <h2
+          class="text-2xl md:text-3xl font-bold text-gray-800 uppercase tracking-widest mb-3"
+        >
+          NOMBRE DE TU UNIVERSIDAD
+        </h2>
+        <h3 class="text-lg md:text-xl font-medium text-gray-600 uppercase tracking-wide">
+          Facultad de Ingeniería y Tecnología
+        </h3>
+        <p class="text-gray-500 mt-2 italic text-lg">
+          Departamento de Ciencias de la Computación
+        </p>
+      </header>
 
+      <div class="flex-grow flex items-center justify-center z-10 py-6 min-h-[250px]">
+        <div class="relative w-56 h-56 flex items-center justify-center">
+          <img
+            id="uni-logo"
+            src=""
+            alt="Logo Universidad"
+            class="w-full h-full object-contain opacity-80 transition-opacity duration-300"
+            loading="lazy"
+            decoding="async"
+            onload="this.style.opacity = 1"
+            onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='flex';"
+          />
 
-        <div class="flex-grow flex items-center justify-center z-10 py-6 min-h-[250px]">
-            
-            <div class="relative w-56 h-56 flex items-center justify-center">
+          <div
+            id="logo-fallback"
+            class="hidden absolute inset-0 flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-lg bg-gray-50 text-gray-400"
+          >
+            <span class="text-sm font-sans">Sin Logo</span>
+          </div>
+        </div>
+      </div>
 
-                <img 
-                    id="uni-logo"
-                    src="" 
-                    alt="Logo Universidad" 
-                    class="w-full h-full object-contain opacity-80 transition-opacity duration-300"
-                    loading="lazy"
-                    decoding="async"
-                    onload="this.style.opacity = 1"
-                    onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='flex';"
-                >
+      <section class="mb-12 z-10">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-8 leading-tight">
+          INFORME DE PROYECTO FINAL
+        </h1>
+        <div class="w-32 h-1.5 bg-blue-900 mx-auto mb-8"></div>
+        <h2 class="text-2xl md:text-3xl font-normal text-gray-700 italic">
+          "Implementación de Sistemas Web Responsivos"
+        </h2>
+      </section>
 
-                <div id="logo-fallback" class="hidden absolute inset-0 flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-lg bg-gray-50 text-gray-400">
-                    <span class="text-sm font-sans">Sin Logo</span>
-                </div>
+      <footer class="w-full text-center mt-auto z-10">
+        <div
+          class="inline-block text-left bg-gray-50 p-8 rounded-xl border border-gray-200 shadow-md"
+        >
+          <div class="grid grid-cols-[auto_1fr] gap-x-6 gap-y-3 text-lg md:text-xl">
+            <span class="font-bold text-gray-800 self-start">Estudiantes:</span>
+            <div class="text-gray-700 flex flex-col gap-1">
+              <span>Nyls Apaza Chavez(2023-10928)</span>
+              <span>Walter Aguilar(2023-12345)</span>
             </div>
 
+            <span class="font-bold text-gray-800">Materia:</span>
+            <span class="text-gray-700">Desarrollo Web II</span>
+
+            <span class="font-bold text-gray-800">Docente:</span>
+            <span class="text-gray-700">Ing. Alejandro Cortes</span>
+
+            <span class="font-bold text-gray-800">Fecha:</span>
+            <span class="text-gray-700" id="current-date">--/--/----</span>
+          </div>
         </div>
 
-        <section class="mb-12 z-10">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-8 leading-tight">
-                INFORME DE PROYECTO FINAL
-            </h1>
-            <div class="w-32 h-1.5 bg-blue-900 mx-auto mb-8"></div>
-            <h2 class="text-2xl md:text-3xl font-normal text-gray-700 italic">
-                "Implementación de Sistemas Web Responsivos"
-            </h2>
-        </section>
-
-        <footer class="w-full text-center mt-auto z-10">
-            <div class="inline-block text-left bg-gray-50 p-8 rounded-xl border border-gray-200 shadow-md">
-                <div class="grid grid-cols-[auto_1fr] gap-x-6 gap-y-3 text-lg md:text-xl">
-                    
-                    <span class="font-bold text-gray-800 self-start">Estudiantes:</span>
-                    <div class="text-gray-700 flex flex-col gap-1">
-                        <span>Nyls Apaza Chavez(2023-10928)</span>
-                        <span>Walter Aguilar(2023-12345)</span>
-                    </div>
-
-                    <span class="font-bold text-gray-800">Materia:</span>
-                    <span class="text-gray-700">Desarrollo Web II</span>
-
-                    <span class="font-bold text-gray-800">Docente:</span>
-                    <span class="text-gray-700">Ing. María Rodríguez</span>
-
-                    <span class="font-bold text-gray-800">Fecha:</span>
-                    <span class="text-gray-700" id="current-date">--/--/----</span>
-                    
-                </div>
-            </div>
-            
-            <div class="text-center mt-12 text-gray-500 font-bold uppercase tracking-widest text-base">
-                La Paz - Bolivia<br>
-                2025
-            </div>
-        </footer>
-
+        <div
+          class="text-center mt-12 text-gray-500 font-bold uppercase tracking-widest text-base"
+        >
+          La Paz - Bolivia<br />
+          2025
+        </div>
+      </footer>
     </div>
 
     <script>
-
-        // Poner fecha actual
-        const dateElement = document.getElementById('current-date');
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
-        // Usamos try-catch para evitar errores de bloqueo si algo falla en el objeto Date
-        try {
-            dateElement.textContent = new Date().toLocaleDateString('es-ES', options);
-        } catch (e) {
-            dateElement.textContent = "Fecha Actual";
-        }
+      // Poner fecha actual
+      const dateElement = document.getElementById("current-date");
+      const options = { year: "numeric", month: "long", day: "numeric" };
+      // Usamos try-catch para evitar errores de bloqueo si algo falla en el objeto Date
+      try {
+        dateElement.textContent = new Date().toLocaleDateString("es-ES", options);
+      } catch (e) {
+        dateElement.textContent = "Fecha Actual";
+      }
     </script>
-</body>
+  </body>
 </html>
